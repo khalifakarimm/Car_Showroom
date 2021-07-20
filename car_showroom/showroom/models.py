@@ -17,8 +17,8 @@ class Location(models.Model):
 class Showroom(models.Model):
     name = models.CharField(max_length=150, unique=True)
     is_active = models.BooleanField(default=True)
-    creation_time = models.DateTimeField(auto_now_add=True)
-    modification_time = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
     preferred_model = models.CharField(max_length=50)
     preferred_carcase = models.CharField(max_length=50)

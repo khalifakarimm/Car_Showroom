@@ -5,8 +5,8 @@ from django.db import models
 class Manufacturer(models.Model):
     name = models.CharField(max_length=150, unique=True)
     is_active = models.BooleanField(default=True)
-    creation_time = models.DateTimeField(auto_now_add=True)
-    modification_time = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True)
     location = models.ForeignKey(
         "showroom.Location",
@@ -31,8 +31,8 @@ class Car(models.Model):
     state = models.CharField(max_length=25)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     is_active = models.BooleanField(default=True)
-    creation_time = models.DateTimeField(auto_now_add=True)
-    modification_time = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     production_date = models.DateTimeField(
         validators=(MinValueValidator(1950), MaxValueValidator(2021))
     )
@@ -44,8 +44,8 @@ class Car(models.Model):
 class Provider(models.Model):
     name = models.CharField(max_length=150, unique=True)
     is_active = models.BooleanField(default=True)
-    creation_time = models.DateTimeField(auto_now_add=True)
-    modification_time = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True)
     foundation_time = models.DateTimeField()
     cars = models.ManyToManyField(

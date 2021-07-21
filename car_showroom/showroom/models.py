@@ -38,7 +38,7 @@ class Showroom(models.Model):
     )
 
     providers = models.ManyToManyField(
-        "provider.Provider", null=True, related_name="car_showrooms"
+        "provider.Provider", related_name="car_showrooms"
     )
 
     def __str__(self):

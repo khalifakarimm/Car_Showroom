@@ -54,7 +54,7 @@ class Provider(models.Model):
     )
     showrooms = models.ManyToManyField(
         "showroom.Showroom",
-        related_name="providers",
+        related_name="+",
     )
 
     def __str__(self):

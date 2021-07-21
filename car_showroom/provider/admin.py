@@ -35,7 +35,7 @@ class ProviderAdmin(admin.ModelAdmin):
     list_filter = (
         "cars",
         "is_active",
-        "customers",
+        "showrooms",
     )
     search_fields = (
         "name",

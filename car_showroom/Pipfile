@@ -4,7 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+django = "*"
 django-countries = "*"
+psycopg2-binary = "*"
+asgiref = "*"
+flake8 = "*"
+djangorestframework = "*"
 
 [dev-packages]
 

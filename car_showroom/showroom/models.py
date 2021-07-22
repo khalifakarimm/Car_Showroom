@@ -83,3 +83,21 @@ class ShowroomPurchaseHistory(models.Model):
 
     def __str__(self):
         return self.bought_car
+
+
+class AvailableCars(models.Model):
+    cars_quantity = models.PositiveSmallIntegerField()
+    car_dealership = models.ForeignKey(
+        Showroom,
+        on_delete=models.CASCADE,
+    )
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    car = models.ForeignKey(
+        "provider.Car",
+        on_delete=models.SET_NULL,
+        related_name="+",
+        null=True,
+    )
+
+    def __str__(self):
+        return f'{self.car_dealership} - {self.car}'

@@ -18,7 +18,7 @@ class State(BaseEnum):
 
 
 class Engine(BaseEnum):
-    PETROL_ENGINE = "petrol engine"
-    DIESEL_ENGINE = "diesel engine"
-    GAS_ENGINE = "gas engine"
-    ELECTRIC_ENGINE = "electric engine"
+    PETROL = "petrol"
+    DIESEL = "diesel"
+    GAS = "gas"
+    ELECTRIC = "electric"

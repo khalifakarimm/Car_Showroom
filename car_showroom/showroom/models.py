@@ -20,17 +20,9 @@ class Showroom(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
-    preferred_model = models.CharField(max_length=50)
-    preferred_carcase = models.CharField(max_length=50)
-    preferred_state = models.CharField(max_length=50)
+    preferences = models.JSONField()
     location = models.ForeignKey(
         Location, on_delete=models.SET_NULL, related_name="+", null=True
-    )
-    available_cars = models.ManyToManyField(
-        Car,
-        through="ShowroomSaleHistory",
-        through_fields=("showroom", "sold_car"),
-        related_name="car_showrooms"
     )
     customers = models.ManyToManyField(
         "user.User",
@@ -83,3 +75,21 @@ class ShowroomPurchaseHistory(models.Model):
 
     def __str__(self):
         return self.bought_car
+
+
+class AvailableCars(models.Model):
+    cars_quantity = models.PositiveSmallIntegerField()
+    car_dealership = models.ForeignKey(
+        Showroom,
+        on_delete=models.CASCADE,
+    )
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    car = models.ForeignKey(
+        "provider.Car",
+        on_delete=models.SET_NULL,
+        related_name="+",
+        null=True,
+    )
+
+    def __str__(self):
+        return f'{self.car_dealership} - {self.car}'

@@ -29,10 +29,6 @@ class Showroom(models.Model):
         related_name="car_showrooms",
     )
 
-    providers = models.ManyToManyField(
-        "provider.Provider", related_name="car_showrooms"
-    )
-
     def __str__(self):
         return self.name
 

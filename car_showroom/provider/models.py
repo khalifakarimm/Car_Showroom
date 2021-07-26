@@ -43,7 +43,7 @@ class Car(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    production_date = models.DateTimeField(
+    production_date = models.IntegerField(
         validators=(MinValueValidator(1950), MaxValueValidator(2021))
     )
 

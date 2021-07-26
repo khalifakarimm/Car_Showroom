@@ -20,17 +20,9 @@ class Showroom(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
-    preferred_model = models.CharField(max_length=50)
-    preferred_carcase = models.CharField(max_length=50)
-    preferred_state = models.CharField(max_length=50)
+    preferences = models.JSONField()
     location = models.ForeignKey(
         Location, on_delete=models.SET_NULL, related_name="+", null=True
-    )
-    available_cars = models.ManyToManyField(
-        Car,
-        through="ShowroomSaleHistory",
-        through_fields=("showroom", "sold_car"),
-        related_name="car_showrooms"
     )
     customers = models.ManyToManyField(
         "user.User",
